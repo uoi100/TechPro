@@ -16,5 +16,16 @@ namespace Lab4MDI
         {
             InitializeComponent();
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (DialogNew dialog = new DialogNew())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK) ;
+                {
+                    MessageBox.Show("Debug", "Testing", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
+            }
+        }
     }
 }
