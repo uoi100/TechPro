@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab04_MDI
+namespace Lab4MDI
 {
-    public partial class FormChild : Form
+    public partial class FormMain : Form
     {
-        public FormChild()
+        public FormMain()
         {
             InitializeComponent();
         }

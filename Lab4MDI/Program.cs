@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab04_MDI
+namespace Lab4MDI
 {
     static class Program
     {
