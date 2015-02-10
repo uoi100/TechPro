@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.text_Path = new System.Windows.Forms.Label();
+            this.lbl_Path = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.worker_Progress = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -42,35 +42,39 @@
             this.openBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.text_Path = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
             // 
+            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.listView1.Enabled = false;
-            this.listView1.Location = new System.Drawing.Point(6, 27);
+            this.listView1.Location = new System.Drawing.Point(0, 24);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(573, 200);
+            this.listView1.Size = new System.Drawing.Size(588, 210);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.Visible = false;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
-            // text_Path
+            // lbl_Path
             // 
-            this.text_Path.AutoSize = true;
-            this.text_Path.Location = new System.Drawing.Point(3, 262);
-            this.text_Path.Name = "text_Path";
-            this.text_Path.Size = new System.Drawing.Size(35, 13);
-            this.text_Path.TabIndex = 1;
-            this.text_Path.Text = "Path: ";
+            this.lbl_Path.AutoSize = true;
+            this.lbl_Path.Location = new System.Drawing.Point(3, 262);
+            this.lbl_Path.Name = "lbl_Path";
+            this.lbl_Path.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Path.TabIndex = 1;
+            this.lbl_Path.Text = "Path: ";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 278);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 290);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(570, 23);
+            this.progressBar1.Size = new System.Drawing.Size(588, 23);
             this.progressBar1.TabIndex = 2;
             // 
             // worker_Progress
@@ -160,18 +164,31 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.fileItems_Click);
             // 
+            // text_Path
+            // 
+            this.text_Path.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.text_Path.Location = new System.Drawing.Point(35, 259);
+            this.text_Path.Name = "text_Path";
+            this.text_Path.ReadOnly = true;
+            this.text_Path.Size = new System.Drawing.Size(541, 20);
+            this.text_Path.TabIndex = 4;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 313);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.text_Path);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.lbl_Path);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(604, 351);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Lab5GUIControls - Calvin Truong A00812171";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -182,7 +199,7 @@
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Label text_Path;
+        private System.Windows.Forms.Label lbl_Path;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.ComponentModel.BackgroundWorker worker_Progress;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -195,6 +212,7 @@
         private System.Windows.Forms.ToolStripMenuItem openBrowserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeBrowserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.TextBox text_Path;
     }
 }
 

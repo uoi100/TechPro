@@ -30,14 +30,13 @@ namespace Lab5GUIControls
             imageList.Images.Add("folder", Lab5GUIControls.Properties.Resources.folder);
             listView1.LargeImageList = imageList;
             listView1.SmallImageList = imageList;
-
-            testList();
+            closeBrowserToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
         /// Description: Gets the files and folders at the root of the folder where this program is held at.
         /// </summary>
-        private void testList()
+        private void rootList()
         {
             currentDirectory = new System.IO.DirectoryInfo(System.IO.Directory.GetDirectoryRoot(System.IO.Directory.GetCurrentDirectory()));
 
@@ -56,12 +55,12 @@ namespace Lab5GUIControls
             foreach(FileInfo file in files)
             {
                 //listView1.Items.Add(files[i]);
-                var listViewItem = listView1.Items.Add(file.FullName);
+                var listViewItem = listView1.Items.Add(file.Name);
                 listViewItem.ImageKey = "file";
             }
 
             // Show the current path
-            text_Path.Text = "Path: " + currentDirectory.FullName;
+            text_Path.Text = currentDirectory.FullName;
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace Lab5GUIControls
 
             foreach (FileInfo file in files)
             {
-                var listViewItem = listView1.Items.Add(file.FullName);
+                var listViewItem = listView1.Items.Add(file.Name);
                 listViewItem.ImageKey = "file";
             }
         }
@@ -110,10 +109,8 @@ namespace Lab5GUIControls
                 foreach (ListViewItem item in items)
                 {
                     if( item.ImageKey == "file" )
-                        Process.Start(item.Text);
+                        Process.Start(currentDirectory.FullName + "/" + item.Text);
                 }
-
-                text_Path.Text = "Path: " + currentDirectory.FullName;
             }
             catch (Exception exception)
             {
@@ -145,7 +142,8 @@ namespace Lab5GUIControls
         }
 
         /// <summary>
-        /// Description: When a folder item is clicked, go into the directory
+        /// Description: Go to the specified path directory, if the directory has a parent directory,
+        /// then add a "Go up one level" option.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -181,7 +179,7 @@ namespace Lab5GUIControls
                     }
                 }
 
-                text_Path.Text = "Path: " + currentDirectory.FullName;
+                text_Path.Text = currentDirectory.FullName;
             }
             catch (Exception exception)
             {
@@ -206,19 +204,42 @@ namespace Lab5GUIControls
                 listView1.View = View.LargeIcon;
         }
 
+        /// <summary>
+        /// Description: When the file option items are clicked, if the user is opening a browser
+        /// give a dialog box asking if the user wants to open the browser at the current directory,
+        /// at the root directory, or cancel.
+        /// When the user decides to close the browser, disable the listview and reset the
+        /// view back to tiles.
+        /// When the user clicks on the exit option, the application will close.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fileItems_Click(object sender, EventArgs e)
         {
             if (sender == openBrowserToolStripMenuItem)
             {
-                listView1.Clear();
                 listView1.Enabled = true;
                 listView1.Visible = true;
-                testList();
+                closeBrowserToolStripMenuItem.Enabled = true;
+                openBrowserToolStripMenuItem.Enabled = false;
+                DialogOpenBrowser dialog = new DialogOpenBrowser();
+
+                dialog.ShowDialog();
+
+                if (dialog.DialogResult == DialogResult.OK)
+                    changeDirectory(Directory.GetCurrentDirectory());
+                else if (dialog.DialogResult == DialogResult.Yes)
+                    rootList();
+
             }
             else if (sender == closeBrowserToolStripMenuItem)
             {
                 listView1.Enabled = false;
                 listView1.Visible = false;
+                listView1.Clear();
+                listView1.View = View.Tile;
+                openBrowserToolStripMenuItem.Enabled = true;
+                closeBrowserToolStripMenuItem.Enabled = false;
             }
             else if (sender == exitToolStripMenuItem)
                 this.Close();
