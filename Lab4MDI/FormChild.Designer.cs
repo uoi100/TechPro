@@ -50,7 +50,6 @@
             this.Controls.Add(this.pictureBox);
             this.Name = "FormChild";
             this.Text = "FormChild";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormChild_FormClosing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.repaint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);

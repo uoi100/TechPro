@@ -118,11 +118,5 @@ namespace Lab4MDI
             pictureBox.Image = myImage;
         }
 
-        private void FormChild_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
-
     }
 }

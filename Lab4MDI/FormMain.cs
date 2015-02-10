@@ -24,6 +24,8 @@ namespace Lab4MDI
         public FormMain()
         {
             InitializeComponent();
+            saveToolStripMenuItem.Enabled = false;
+            saveAsToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
@@ -39,6 +41,9 @@ namespace Lab4MDI
                 {
                     FormChild child = new FormChild(dialog.Resolution);
                     child.MdiParent = this;
+                    child.FormClosing += new System.Windows.Forms.FormClosingEventHandler(childClosing);
+                    saveToolStripMenuItem.Enabled = true;
+                    saveAsToolStripMenuItem.Enabled = true;
                     child.Show();
                 }
             }
@@ -88,6 +93,9 @@ namespace Lab4MDI
                 FormChild child = new FormChild(openFileDialog1.FileName);
                 child.Url = openFileDialog1.FileName;
                 child.MdiParent = this;
+                child.FormClosing += new System.Windows.Forms.FormClosingEventHandler(childClosing);
+                saveToolStripMenuItem.Enabled = true;
+                saveAsToolStripMenuItem.Enabled = true;
                 child.Show();
             }
         }
@@ -111,6 +119,9 @@ namespace Lab4MDI
                     FormChild child = new FormChild();
                     child.Image = image;
                     child.MdiParent = this;
+                    child.FormClosing += new System.Windows.Forms.FormClosingEventHandler(childClosing);
+                    saveToolStripMenuItem.Enabled = true;
+                    saveAsToolStripMenuItem.Enabled = true;
                     child.Show();
                 }
                 catch (Exception exception)
@@ -157,9 +168,42 @@ namespace Lab4MDI
             saveFileDialog1.Title = "Save an Image File";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
                 child.save(saveFileDialog1.FileName);
+            
+        }
+
+        /// <summary>
+        /// Description: If the child is closing, create a dialog that will handle how the user wants the child to close.
+        /// The dialog will allow the form to save, save as, close, or cancel closing.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void childClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            FormChild child = (FormChild)sender;
+            DialogClosing dialog = new DialogClosing();
+            switch (dialog.ShowDialog())
+            {
+                case DialogResult.OK:   // Save
+                    saveToolStripMenuItem_Click(sender, e);
+                    break;
+                case DialogResult.Yes:  // Save-As
+                    saveAsToolStripMenuItem_Click(sender, e);
+                    break;
+                case DialogResult.No: // No
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
+
+            // Checks if there are still child forms, if there is not disable the toolstrips
+            if (this.MdiChildren.Length - 1 <= 0)
+            {
+                saveToolStripMenuItem.Enabled = false;
+                saveAsToolStripMenuItem.Enabled = false;
             }
         }
+
     }
 }
