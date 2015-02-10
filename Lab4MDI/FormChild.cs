@@ -19,7 +19,7 @@ namespace Lab4MDI
         }
 
         /// <summary>
-        /// Description: Constructor that takes a resolution, and creates an image that size of that resolution
+        /// Description: Constructor that takes a resolution, and creates an image that size of that resolution.
         /// </summary>
         /// <param name="size"></param>
         public FormChild(Size size)
@@ -34,7 +34,20 @@ namespace Lab4MDI
         }
 
         /// <summary>
-        /// Description: Set the image for the form to display
+        /// Description: Constructor that takes a filepath, and creates an image of that file from the path.
+        /// </summary>
+        /// <param name="file"></param>
+        public FormChild(String file)
+        {
+            Bitmap bmp = new Bitmap(file);
+            myImage = bmp;
+
+            this.AutoScrollMinSize = myImage.Size;
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Description: Set the image for the form to display.
         /// </summary>
         public Image Image
         {

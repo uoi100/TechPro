@@ -36,7 +36,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.DoubleBuffered = true;
             this.Name = "FormChild";
             this.Text = "FormChild";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.repaint);

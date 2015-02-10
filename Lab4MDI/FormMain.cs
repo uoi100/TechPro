@@ -71,5 +71,22 @@ namespace Lab4MDI
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
         }
+
+        /// <summary>
+        /// Description: Open a file from the file explorer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files (*.jpg, *.jpeg, *.bmp, *.gif)|*.jpg; *.jpeg; *.bmp; *.gif|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FormChild child = new FormChild(openFileDialog1.FileName);
+                child.MdiParent = this;
+                child.Show();
+            }
+        }
     }
 }

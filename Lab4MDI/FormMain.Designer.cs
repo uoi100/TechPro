@@ -39,6 +39,7 @@
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileHorizontallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,7 @@
             this.openFromFileToolStripMenuItem.Name = "openFromFileToolStripMenuItem";
             this.openFromFileToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.openFromFileToolStripMenuItem.Text = "Open From File";
+            this.openFromFileToolStripMenuItem.Click += new System.EventHandler(this.openFromFileToolStripMenuItem_Click);
             // 
             // openFromWebToolStripMenuItem
             // 
@@ -127,6 +129,10 @@
             this.tileVerticallyToolStripMenuItem.Text = "Tile Vertically";
             this.tileVerticallyToolStripMenuItem.Click += new System.EventHandler(this.tileVerticallyToolStripMenuItem_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,6 +163,7 @@
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileHorizontallyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileVerticallyToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
