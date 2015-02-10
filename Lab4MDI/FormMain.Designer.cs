@@ -111,18 +111,21 @@
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
             this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cascadeToolStripMenuItem.Text = "Cascade";
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
             // tileHorizontallyToolStripMenuItem
             // 
             this.tileHorizontallyToolStripMenuItem.Name = "tileHorizontallyToolStripMenuItem";
             this.tileHorizontallyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.tileHorizontallyToolStripMenuItem.Text = "Tile Horizontally";
+            this.tileHorizontallyToolStripMenuItem.Click += new System.EventHandler(this.tileHorizontallyToolStripMenuItem_Click);
             // 
             // tileVerticallyToolStripMenuItem
             // 
             this.tileVerticallyToolStripMenuItem.Name = "tileVerticallyToolStripMenuItem";
             this.tileVerticallyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.tileVerticallyToolStripMenuItem.Text = "Tile Vertically";
+            this.tileVerticallyToolStripMenuItem.Click += new System.EventHandler(this.tileVerticallyToolStripMenuItem_Click);
             // 
             // FormMain
             // 

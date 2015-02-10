@@ -19,6 +19,9 @@ namespace Lab4MDI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Description: Gets the resolution that was checked on the dialog box.
+        /// </summary>
         public Size Resolution{
             get
             {

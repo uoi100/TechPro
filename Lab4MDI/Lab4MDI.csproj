@@ -51,6 +51,12 @@
     <Compile Include="DialogNew.Designer.cs">
       <DependentUpon>DialogNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChild.Designer.cs">
+      <DependentUpon>FormChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DialogNew.resx">
       <DependentUpon>DialogNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChild.resx">
+      <DependentUpon>FormChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
