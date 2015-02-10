@@ -34,6 +34,7 @@ namespace Lab5GUIControls
             viewToolStripMenuItem.Enabled = false;
             text_Path.Visible = false;
             lbl_Path.Visible = false;
+            progressBar1.Visible = false;
         }
 
         /// <summary>
@@ -228,6 +229,7 @@ namespace Lab5GUIControls
                 viewToolStripMenuItem.Enabled = true;
                 text_Path.Visible = true;
                 lbl_Path.Visible = true;
+                progressBar1.Visible = true;
                 DialogOpenBrowser dialog = new DialogOpenBrowser();
 
                 dialog.ShowDialog();
@@ -249,6 +251,7 @@ namespace Lab5GUIControls
                 viewToolStripMenuItem.Enabled = false;
                 text_Path.Visible = false;
                 lbl_Path.Visible = false;
+                progressBar1.Visible = false;
             }
             else if (sender == exitToolStripMenuItem)
                 this.Close();
