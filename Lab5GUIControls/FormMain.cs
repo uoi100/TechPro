@@ -31,6 +31,7 @@ namespace Lab5GUIControls
             listView1.LargeImageList = imageList;
             listView1.SmallImageList = imageList;
             closeBrowserToolStripMenuItem.Enabled = false;
+            viewToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
@@ -222,6 +223,7 @@ namespace Lab5GUIControls
                 listView1.Visible = true;
                 closeBrowserToolStripMenuItem.Enabled = true;
                 openBrowserToolStripMenuItem.Enabled = false;
+                viewToolStripMenuItem.Enabled = true;
                 DialogOpenBrowser dialog = new DialogOpenBrowser();
 
                 dialog.ShowDialog();
@@ -240,6 +242,7 @@ namespace Lab5GUIControls
                 listView1.View = View.Tile;
                 openBrowserToolStripMenuItem.Enabled = true;
                 closeBrowserToolStripMenuItem.Enabled = false;
+                viewToolStripMenuItem.Enabled = false;
             }
             else if (sender == exitToolStripMenuItem)
                 this.Close();
