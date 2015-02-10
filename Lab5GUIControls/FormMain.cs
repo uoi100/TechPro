@@ -32,6 +32,8 @@ namespace Lab5GUIControls
             listView1.SmallImageList = imageList;
             closeBrowserToolStripMenuItem.Enabled = false;
             viewToolStripMenuItem.Enabled = false;
+            text_Path.Visible = false;
+            lbl_Path.Visible = false;
         }
 
         /// <summary>
@@ -224,6 +226,8 @@ namespace Lab5GUIControls
                 closeBrowserToolStripMenuItem.Enabled = true;
                 openBrowserToolStripMenuItem.Enabled = false;
                 viewToolStripMenuItem.Enabled = true;
+                text_Path.Visible = true;
+                lbl_Path.Visible = true;
                 DialogOpenBrowser dialog = new DialogOpenBrowser();
 
                 dialog.ShowDialog();
@@ -243,6 +247,8 @@ namespace Lab5GUIControls
                 openBrowserToolStripMenuItem.Enabled = true;
                 closeBrowserToolStripMenuItem.Enabled = false;
                 viewToolStripMenuItem.Enabled = false;
+                text_Path.Visible = false;
+                lbl_Path.Visible = false;
             }
             else if (sender == exitToolStripMenuItem)
                 this.Close();
