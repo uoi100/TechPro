@@ -26,8 +26,8 @@ namespace Lab5GUIControls
 
             ImageList imageList = new ImageList();
 
-            imageList.Images.Add("file", Lab5GUIControls.Properties.Resources.file);
-            imageList.Images.Add("folder", Lab5GUIControls.Properties.Resources.folder);
+            imageList.Images.Add("file", Lab5GUIControls.Properties.Resources.file_icon);
+            imageList.Images.Add("folder", Lab5GUIControls.Properties.Resources.directory_icon);
             listView1.LargeImageList = imageList;
             listView1.SmallImageList = imageList;
             closeBrowserToolStripMenuItem.Enabled = false;
@@ -48,7 +48,7 @@ namespace Lab5GUIControls
             // Add all folders to the listview
             foreach (DirectoryInfo folder in folders)
             {
-                var listViewItem = listView1.Items.Add(folder.FullName);
+                var listViewItem = listView1.Items.Add(folder.Name);
                 listViewItem.ImageKey = "folder";
             }
 
@@ -85,7 +85,7 @@ namespace Lab5GUIControls
 
             foreach (DirectoryInfo folder in folders)
             {
-                var listViewItem = listView1.Items.Add(folder.FullName);
+                var listViewItem = listView1.Items.Add(folder.Name);
                 listViewItem.ImageKey = "folder";
             }
 
@@ -176,7 +176,7 @@ namespace Lab5GUIControls
                         progressBar1.Value = 0;
                         progressBar1.Step = 1;
                         worker_Progress.RunWorkerAsync();
-                        changeDirectory(item.Text);
+                        changeDirectory(currentDirectory.FullName + "/" + item.Text);
                     }
                 }
 
