@@ -13,8 +13,10 @@ namespace Lab4MDI
     public partial class FormChild : Form
     {
         private Image myImage;
+        private String url;
         public FormChild()
         {
+            url = String.Empty;
             InitializeComponent();
         }
 
@@ -30,6 +32,7 @@ namespace Lab4MDI
             myImage = bmp;
 
             this.AutoScrollMinSize = size;
+            url = String.Empty;
             InitializeComponent();
         }
 
@@ -42,6 +45,7 @@ namespace Lab4MDI
             Bitmap bmp = new Bitmap(file);
             myImage = bmp;
 
+            url = file;
             this.AutoScrollMinSize = myImage.Size;
             InitializeComponent();
         }
@@ -56,13 +60,67 @@ namespace Lab4MDI
         }
 
         /// <summary>
+        /// Description: Url of the file that the form contains.
+        /// </summary>
+        public String Url
+        {
+            get { return url; }
+            set { url = value; }
+        }
+
+        /// <summary>
+        /// Description: Save image at the url location stored on this form
+        /// </summary>
+        public void save()
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(myImage);
+                myImage.Dispose();
+
+                myImage = bmp;
+                myImage.Save(url);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Description: Save image at the specified url location
+        /// </summary>
+        /// <param name="url"></param>
+        public void save(string url)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(myImage);
+                myImage.Dispose();
+
+                myImage = bmp;
+                myImage.Save(url);
+                this.url = url;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
         /// Description: Draws the image stored in the form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void repaint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(myImage, 0, 0);
+            pictureBox.Image = myImage;
+        }
+
+        private void FormChild_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
 
