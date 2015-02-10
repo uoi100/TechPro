@@ -39,23 +39,28 @@
             this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smallIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.largeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(3, 48);
+            this.listView1.Enabled = false;
+            this.listView1.Location = new System.Drawing.Point(6, 27);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(573, 200);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.Visible = false;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // text_Path
             // 
             this.text_Path.AutoSize = true;
-            this.text_Path.Location = new System.Drawing.Point(3, 235);
+            this.text_Path.Location = new System.Drawing.Point(3, 262);
             this.text_Path.Name = "text_Path";
             this.text_Path.Size = new System.Drawing.Size(35, 13);
             this.text_Path.TabIndex = 1;
@@ -87,6 +92,10 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openBrowserToolStripMenuItem,
+            this.closeBrowserToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -107,28 +116,49 @@
             this.tileDefaultToolStripMenuItem.Name = "tileDefaultToolStripMenuItem";
             this.tileDefaultToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileDefaultToolStripMenuItem.Text = "Tile (Default)";
-            this.tileDefaultToolStripMenuItem.Click += new System.EventHandler(this.tileDefaultToolStripMenuItem_Click);
+            this.tileDefaultToolStripMenuItem.Click += new System.EventHandler(this.viewItems_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
             this.listToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listToolStripMenuItem.Text = "List";
-            this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
+            this.listToolStripMenuItem.Click += new System.EventHandler(this.viewItems_Click);
             // 
             // smallIconsToolStripMenuItem
             // 
             this.smallIconsToolStripMenuItem.Name = "smallIconsToolStripMenuItem";
             this.smallIconsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.smallIconsToolStripMenuItem.Text = "Small Icons";
-            this.smallIconsToolStripMenuItem.Click += new System.EventHandler(this.smallIconsToolStripMenuItem_Click);
+            this.smallIconsToolStripMenuItem.Click += new System.EventHandler(this.viewItems_Click);
             // 
             // largeIconsToolStripMenuItem
             // 
             this.largeIconsToolStripMenuItem.Name = "largeIconsToolStripMenuItem";
             this.largeIconsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.largeIconsToolStripMenuItem.Text = "Large Icons";
-            this.largeIconsToolStripMenuItem.Click += new System.EventHandler(this.largeIconsToolStripMenuItem_Click);
+            this.largeIconsToolStripMenuItem.Click += new System.EventHandler(this.viewItems_Click);
+            // 
+            // openBrowserToolStripMenuItem
+            // 
+            this.openBrowserToolStripMenuItem.Name = "openBrowserToolStripMenuItem";
+            this.openBrowserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openBrowserToolStripMenuItem.Text = "Open Browser";
+            this.openBrowserToolStripMenuItem.Click += new System.EventHandler(this.fileItems_Click);
+            // 
+            // closeBrowserToolStripMenuItem
+            // 
+            this.closeBrowserToolStripMenuItem.Name = "closeBrowserToolStripMenuItem";
+            this.closeBrowserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeBrowserToolStripMenuItem.Text = "Close Browser";
+            this.closeBrowserToolStripMenuItem.Click += new System.EventHandler(this.fileItems_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.fileItems_Click);
             // 
             // FormMain
             // 
@@ -162,6 +192,9 @@
         private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem smallIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem largeIconsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openBrowserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeBrowserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

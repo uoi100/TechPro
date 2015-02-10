@@ -16,6 +16,10 @@ namespace Lab5GUIControls
     public partial class FormMain : Form
     {
         private System.IO.DirectoryInfo currentDirectory;
+
+        /// <summary>
+        /// Description: Default constructor, initializes the images that will be used in the listview
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -37,9 +41,18 @@ namespace Lab5GUIControls
         {
             currentDirectory = new System.IO.DirectoryInfo(System.IO.Directory.GetDirectoryRoot(System.IO.Directory.GetCurrentDirectory()));
 
+            DirectoryInfo[] folders = currentDirectory.GetDirectories();
             FileInfo[] files = currentDirectory.GetFiles();
 
-            //retrieve all image files
+
+            // Add all folders to the listview
+            foreach (DirectoryInfo folder in folders)
+            {
+                var listViewItem = listView1.Items.Add(folder.FullName);
+                listViewItem.ImageKey = "folder";
+            }
+
+            // Add all files to the listview
             foreach(FileInfo file in files)
             {
                 //listView1.Items.Add(files[i]);
@@ -47,14 +60,7 @@ namespace Lab5GUIControls
                 listViewItem.ImageKey = "file";
             }
 
-            DirectoryInfo[] folders = currentDirectory.GetDirectories();
-
-            foreach (DirectoryInfo folder in folders)
-            {
-                var listViewItem = listView1.Items.Add(folder.FullName);
-                listViewItem.ImageKey = "folder";
-            }
-
+            // Show the current path
             text_Path.Text = "Path: " + currentDirectory.FullName;
         }
 
@@ -67,19 +73,14 @@ namespace Lab5GUIControls
             listView1.Clear();
 
             currentDirectory = new System.IO.DirectoryInfo(path);
-            FileInfo[] files = currentDirectory.GetFiles();
             DirectoryInfo[] folders = currentDirectory.GetDirectories();
+            FileInfo[] files = currentDirectory.GetFiles();
 
+            // If there is a parent folder, add a Go Up One Level option
             if (currentDirectory.Parent != null)
             {
                 ListViewItem item = listView1.Items.Add("Go Up One Level");
                 item.ImageKey = "...";
-            }
-
-            foreach (FileInfo file in files)
-            {
-                var listViewItem = listView1.Items.Add(file.FullName);
-                listViewItem.ImageKey = "file";
             }
 
             foreach (DirectoryInfo folder in folders)
@@ -88,8 +89,18 @@ namespace Lab5GUIControls
                 listViewItem.ImageKey = "folder";
             }
 
+            foreach (FileInfo file in files)
+            {
+                var listViewItem = listView1.Items.Add(file.FullName);
+                listViewItem.ImageKey = "file";
+            }
         }
 
+        /// <summary>
+        /// Description: If an item is double clicked, check if it is a file, if it is open the file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView1_ItemActivate(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection items = listView1.SelectedItems;
@@ -110,6 +121,11 @@ namespace Lab5GUIControls
             }
         }
 
+        /// <summary>
+        /// Description: Worker in the background that is updating the progress bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_Progress_DoWork(object sender, DoWorkEventArgs e)
         {
             for (int i = 0; i <= 100; i++)
@@ -118,11 +134,21 @@ namespace Lab5GUIControls
             }
         }
 
+        /// <summary>
+        /// Description: Update the value of the progress bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_Progress_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
         }
 
+        /// <summary>
+        /// Description: When a folder item is clicked, go into the directory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection items = listView1.SelectedItems;
@@ -163,24 +189,39 @@ namespace Lab5GUIControls
             }
         }
 
-        private void listToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Description: When a view menu option is selected, change the listview's view to the respective option that was selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void viewItems_Click(object sender, EventArgs e)
         {
-            listView1.View = View.List;
+            if(sender == listToolStripMenuItem)
+                listView1.View = View.List;
+            else if(sender == tileDefaultToolStripMenuItem)
+                listView1.View = View.Tile;
+            else if(sender == smallIconsToolStripMenuItem)
+                listView1.View = View.SmallIcon;
+            else if(sender == largeIconsToolStripMenuItem)
+                listView1.View = View.LargeIcon;
         }
 
-        private void tileDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+        private void fileItems_Click(object sender, EventArgs e)
         {
-            listView1.View = View.Tile;
-        }
-
-        private void smallIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listView1.View = View.SmallIcon;
-        }
-
-        private void largeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listView1.View = View.LargeIcon;
+            if (sender == openBrowserToolStripMenuItem)
+            {
+                listView1.Clear();
+                listView1.Enabled = true;
+                listView1.Visible = true;
+                testList();
+            }
+            else if (sender == closeBrowserToolStripMenuItem)
+            {
+                listView1.Enabled = false;
+                listView1.Visible = false;
+            }
+            else if (sender == exitToolStripMenuItem)
+                this.Close();
         }
 
         // End of Class
