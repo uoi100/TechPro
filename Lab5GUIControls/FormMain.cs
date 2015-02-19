@@ -16,6 +16,7 @@ namespace Lab5GUIControls
     public partial class FormMain : Form
     {
         private System.IO.DirectoryInfo currentDirectory;
+        private delegate void progressCallback(object sender, DoWorkEventArgs e);
 
         /// <summary>
         /// Description: Default constructor, initializes the images that will be used in the listview
@@ -47,6 +48,7 @@ namespace Lab5GUIControls
             DirectoryInfo[] folders = currentDirectory.GetDirectories();
             FileInfo[] files = currentDirectory.GetFiles();
 
+            progressBar(folders.Length + files.Length);
 
             // Add all folders to the listview
             foreach (DirectoryInfo folder in folders)
@@ -86,6 +88,8 @@ namespace Lab5GUIControls
                 item.ImageKey = "...";
             }
 
+            progressBar(folders.Length + files.Length);
+
             foreach (DirectoryInfo folder in folders)
             {
                 var listViewItem = listView1.Items.Add(folder.Name);
@@ -123,15 +127,24 @@ namespace Lab5GUIControls
         }
 
         /// <summary>
-        /// Description: Worker in the background that is updating the progress bar
+        /// Description: Recursive function that updates the value of the progress bar until it is full.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void worker_Progress_DoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = 0; i <= 100; i++)
+            if (this.InvokeRequired)
             {
-                worker_Progress.ReportProgress(i);
+                progressCallback d = new progressCallback(worker_Progress_DoWork);
+                this.Invoke(d, new object[] { sender, e });
+            } else if(progressBar1.Value < progressBar1.Maximum)
+            {
+                if (progressBar1.Value + progressBar1.Step < progressBar1.Maximum)
+                    progressBar1.Value += progressBar1.Step;
+                else
+                    progressBar1.Value = progressBar1.Maximum;
+                worker_Progress.ReportProgress(progressBar1.Value);
+                worker_Progress_DoWork(sender, e);
             }
         }
 
@@ -158,31 +171,11 @@ namespace Lab5GUIControls
             try
             {
                 foreach (ListViewItem item in items)
-                {
-                    if (item.ImageKey == "...")
-                    {
-
-                        if (currentDirectory.Parent != null)
-                        {
-                            progressBar1.Style = ProgressBarStyle.Continuous;
-                            progressBar1.Maximum = 100;
-                            progressBar1.Value = 0;
-                            progressBar1.Step = 1;
-                            worker_Progress.RunWorkerAsync();
-                            changeDirectory(currentDirectory.Parent.FullName);
-                        }
-                    }
-                    else if (item.ImageKey == "folder")
-                    {
-                        progressBar1.Style = ProgressBarStyle.Continuous;
-                        progressBar1.Maximum = 100;
-                        progressBar1.Value = 0;
-                        progressBar1.Step = 1;
-                        worker_Progress.RunWorkerAsync();
+                    if (item.ImageKey == "...")         // Go up one level
+                        changeDirectory(currentDirectory.Parent.FullName);
+                    else if (item.ImageKey == "folder") // Enter folder
                         changeDirectory(currentDirectory.FullName + "/" + item.Text);
-                    }
-                }
-
+                
                 text_Path.Text = currentDirectory.FullName;
             }
             catch (Exception exception)
@@ -255,6 +248,22 @@ namespace Lab5GUIControls
             }
             else if (sender == exitToolStripMenuItem)
                 this.Close();
+        }
+
+        /// <summary>
+        /// Description: Sets the progress bar based on the number of files and folders the form has to load.
+        /// </summary>
+        /// <param name="num">Total number of files and folders to load</param>
+        private void progressBar(int num)
+        {
+            progressBar1.Style = ProgressBarStyle.Continuous;
+            progressBar1.Maximum = 100;
+            if (num > 0 && (progressBar1.Maximum / num) > 0)
+                progressBar1.Step = progressBar1.Maximum / num;
+            else
+                progressBar1.Step = 1;
+            progressBar1.Value = 0;
+            worker_Progress.RunWorkerAsync();
         }
 
         // End of Class
