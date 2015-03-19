@@ -48,6 +48,7 @@
             // 
             // pictureButton1
             // 
+            this.pictureButton1.HoverImage = global::Lab7CalvinTruongTestDriver.Properties.Resources.Exit_Hover;
             this.pictureButton1.Image = global::Lab7CalvinTruongTestDriver.Properties.Resources.Exit;
             this.pictureButton1.Location = new System.Drawing.Point(12, 103);
             this.pictureButton1.Name = "pictureButton1";
