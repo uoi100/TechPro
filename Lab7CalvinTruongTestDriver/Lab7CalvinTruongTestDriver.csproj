@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lab7CalvinTruongControlLibrary">
-      <HintPath>..\Lab7CalvinTruongControlLibrary\bin\Debug\Lab7CalvinTruongControlLibrary.dll</HintPath>
+    <Reference Include="Lab7CalvinTruongControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Lab7CalvinTruongControlLibrary.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
