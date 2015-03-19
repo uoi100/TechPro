@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab7CalvinTruongTestDriver.Properties {
+namespace Lab7TestDriver.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Lab7CalvinTruongTestDriver.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lab7CalvinTruongTestDriver.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lab7TestDriver.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,16 +76,6 @@ namespace Lab7CalvinTruongTestDriver.Properties {
         internal static System.Drawing.Bitmap Exit_Hover {
             get {
                 object obj = ResourceManager.GetObject("Exit_Hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Start {
-            get {
-                object obj = ResourceManager.GetObject("Start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

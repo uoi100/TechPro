@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab7CalvinTruongControlLibrary.Properties
+namespace CalvinCustom.Properties
 {
     
     

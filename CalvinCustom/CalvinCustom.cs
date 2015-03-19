@@ -1,21 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Windows.Controls;
 using System.ComponentModel;
+using System.Drawing;
 
-namespace Lab7CalvinTruongControlLibrary
+namespace CalvinCustom
 {
     /// <summary>
     /// Description: Button that has a set of two colors painted into a pattern
     /// </summary>
-    public class ColorButton : System.Windows.Forms.Button
+    public class CalvinButton : System.Windows.Forms.Button
     {
         private Color colorA_ = Color.Empty;
         private Color colorB_ = Color.Empty;
         private int colorA_Alpha_ = 100;
         private int colorB_Alpha_ = 100;
-        private event EventHandler calvinEvent;
 
         /// <summary>
         /// Description: Get and Set method for the primary color
@@ -83,7 +85,7 @@ namespace Lab7CalvinTruongControlLibrary
             get { return base.Text; }
             set { base.Text = value; Invalidate(); }
         }
-       
+
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
@@ -94,7 +96,7 @@ namespace Lab7CalvinTruongControlLibrary
             Color c2 = Color.FromArgb(colorB_Alpha_, colorB_);
             using (Brush b = new System.Drawing.Drawing2D.LinearGradientBrush(ClientRectangle, c1, c2, 10))
                 pevent.Graphics.FillRectangle(b, ClientRectangle);
-            
+
         }
     }
 }

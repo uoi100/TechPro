@@ -1,4 +1,4 @@
-﻿namespace Lab7CalvinTruongTestDriver
+﻿namespace Lab7TestDriver
 {
     partial class Form1
     {
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.colorButton1 = new Lab7CalvinTruongControlLibrary.ColorButton();
-            this.pictureButton1 = new Lab7CalvinTruongControlLibrary.PictureButton();
+            this.calvinButton1 = new CalvinCustom.CalvinButton();
+            this.pictureButton1 = new CalvinCustom.PictureButton();
             this.SuspendLayout();
             // 
-            // colorButton1
+            // calvinButton1
             // 
-            this.colorButton1.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorButton1.ColorA_Alpha = 100;
-            this.colorButton1.ColorB = System.Drawing.Color.Yellow;
-            this.colorButton1.ColorB_Alpha = 100;
-            this.colorButton1.Location = new System.Drawing.Point(28, 12);
-            this.colorButton1.Name = "colorButton1";
-            this.colorButton1.Size = new System.Drawing.Size(188, 92);
-            this.colorButton1.TabIndex = 0;
-            this.colorButton1.Text = "Click to Exit";
-            this.colorButton1.UseVisualStyleBackColor = true;
-            this.colorButton1.CalvinEvent += new System.EventHandler(this.colorButton1_CalvinEvent);
+            this.calvinButton1.ColorA = System.Drawing.Color.Red;
+            this.calvinButton1.ColorA_Alpha = 100;
+            this.calvinButton1.ColorB = System.Drawing.Color.Blue;
+            this.calvinButton1.ColorB_Alpha = 100;
+            this.calvinButton1.Location = new System.Drawing.Point(27, 32);
+            this.calvinButton1.Name = "calvinButton1";
+            this.calvinButton1.Size = new System.Drawing.Size(207, 79);
+            this.calvinButton1.TabIndex = 0;
+            this.calvinButton1.Text = "Click to Exit";
+            this.calvinButton1.UseVisualStyleBackColor = true;
+            this.calvinButton1.CalvinEvent += new System.EventHandler(this.Exit);
             // 
             // pictureButton1
             // 
-            this.pictureButton1.HoverImage = global::Lab7CalvinTruongTestDriver.Properties.Resources.Exit_Hover;
-            this.pictureButton1.Image = global::Lab7CalvinTruongTestDriver.Properties.Resources.Exit;
-            this.pictureButton1.Location = new System.Drawing.Point(28, 130);
+            this.pictureButton1.HoverImage = global::Lab7TestDriver.Properties.Resources.Exit_Hover;
+            this.pictureButton1.Image = global::Lab7TestDriver.Properties.Resources.Exit;
+            this.pictureButton1.Location = new System.Drawing.Point(27, 127);
             this.pictureButton1.Name = "pictureButton1";
-            this.pictureButton1.Size = new System.Drawing.Size(188, 81);
+            this.pictureButton1.Size = new System.Drawing.Size(207, 108);
             this.pictureButton1.TabIndex = 1;
             this.pictureButton1.Text = "pictureButton1";
             this.pictureButton1.UseVisualStyleBackColor = true;
-            this.pictureButton1.Click += new System.EventHandler(this.colorButton1_CalvinEvent);
+            this.pictureButton1.Click += new System.EventHandler(this.Exit);
             // 
             // Form1
             // 
@@ -64,7 +64,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.pictureButton1);
-            this.Controls.Add(this.colorButton1);
+            this.Controls.Add(this.calvinButton1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -73,8 +73,8 @@
 
         #endregion
 
-        private Lab7CalvinTruongControlLibrary.ColorButton colorButton1;
-        private Lab7CalvinTruongControlLibrary.PictureButton pictureButton1;
+        private CalvinCustom.CalvinButton calvinButton1;
+        private CalvinCustom.PictureButton pictureButton1;
     }
 }
 

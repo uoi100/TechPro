@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab7CalvinTruongTestDriver.Properties
+namespace Lab7TestDriver.Properties
 {
 
 

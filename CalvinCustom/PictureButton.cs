@@ -1,9 +1,15 @@
-﻿using System.Windows.Forms;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
-namespace Lab7CalvinTruongControlLibrary
+namespace CalvinCustom
 {
+
     /// <summary>
     /// Description: A button which displays an image that can be clicked on
     /// </summary>

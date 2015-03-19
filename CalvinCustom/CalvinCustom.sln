@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab7CalvinTruongControlLibrary", "Lab7CalvinTruongControlLibrary.csproj", "{566D4DA4-F748-44FF-A633-B8A88E2BA6E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalvinCustom", "CalvinCustom.csproj", "{D23E4329-514B-4FC0-A386-FC09ADB86D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{566D4DA4-F748-44FF-A633-B8A88E2BA6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{566D4DA4-F748-44FF-A633-B8A88E2BA6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{566D4DA4-F748-44FF-A633-B8A88E2BA6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{566D4DA4-F748-44FF-A633-B8A88E2BA6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D23E4329-514B-4FC0-A386-FC09ADB86D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23E4329-514B-4FC0-A386-FC09ADB86D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23E4329-514B-4FC0-A386-FC09ADB86D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23E4329-514B-4FC0-A386-FC09ADB86D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
